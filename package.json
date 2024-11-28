@@ -1,0 +1,38 @@
+{
+  "name": "vite-react-login",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 3000 --open",
+    "api-dev": "npm nodemon ./src/backend/server.js --trace-deprecation",
+    "build": "vite build",
+    "serve": "vite preview --open",
+    "test": "vitest",
+    "start-dev": "npm run start & npm run api-dev",
+    "start-dev-win": "start npm run start && start npm run api-dev"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.25.1",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "log4js": "^6.9.1",
+    "mysql2": "^3.11.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.6",
+    "@testing-library/react": "^14.1.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "jsdom": "^23.0.1",
+    "nodemon": "^3.1.7",
+    "vite": "^5.0.8",
+    "vitest": "^1.1.1"
+  },
+  "author": "Jan Schönfeld",
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
