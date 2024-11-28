@@ -1,18 +1,15 @@
-// routes/authRouter.js
 import express from 'express';
 import { registerUser, loginUser, logoutUser } from '../middleware/authService.js';
 import { authLogger } from '../../logging/logger.js';
 
 const router = express.Router();
 
-// Middleware to log HTTP requests
 router.use((req, res, next) => {
     authLogger.debug('This is in the router.use function in userRouter.js');
     authLogger.info(`${req.method} ${req.url}`);
     next();
 });
 
-// Register endpoint
 router.post('/register', async (req, res) => {
     const { username, password } = req.body;
 
@@ -25,7 +22,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login endpoint
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
@@ -38,13 +34,12 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Logout endpoint
 router.post('/logout', async (req, res) => {
-    const { username } = req.body; // Get the username from the request body
+    const { username } = req.body;
 
     try {
         authLogger.debug('This is in the router.post function for the /logout endpoint in userRouter.js');
-        await logoutUser(username); // Call the logoutUser function
+        await logoutUser(username);
         return res.status(200).json({ message: 'Logged out successfully.' });
     } catch (error) {
         authLogger.error(`Error logging out user ${username}: ${error.message}`);
@@ -52,5 +47,4 @@ router.post('/logout', async (req, res) => {
     }
 });
 
-// Export the router as the default export
 export default router;

@@ -6,10 +6,10 @@ const App = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [isLogin, setIsLogin] = useState(true); // Toggle between login and register
-  const [accessToken, setAccessToken] = useState(''); // State to store the access token
-  const [refreshToken, setRefreshToken] = useState(''); // State to store the refresh token
-  const [tokenDuration, setTokenDuration] = useState(''); // State to store token duration
+  const [isLogin, setIsLogin] = useState(true);
+  const [accessToken, setAccessToken] = useState('');
+  const [refreshToken, setRefreshToken] = useState('');
+  const [tokenDuration, setTokenDuration] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +27,9 @@ const App = () => {
     setMessage(data.message);
 
     if (response.ok && isLogin) {
-      setAccessToken(data.accessToken); // Store the access token
-      setRefreshToken(data.refreshToken); // Store the refresh token
-      setTokenDuration('Access Token: 15 minutes, Refresh Token: 7 days'); // Set token duration message
+      setAccessToken(data.accessToken);
+      setRefreshToken(data.refreshToken);
+      setTokenDuration('Access Token: 15 minutes, Refresh Token: 7 days');
     }
   };
 
@@ -43,9 +43,9 @@ const App = () => {
     });
 
     if (response.ok) {
-      setAccessToken(''); // Clear the access token
-      setRefreshToken(''); // Clear the refresh token
-      setTokenDuration(''); // Clear the token duration message
+      setAccessToken('');
+      setRefreshToken('');
+      setTokenDuration('');
       setMessage('Logged out successfully.');
     } else {
       const data = await response.json();
@@ -53,42 +53,54 @@ const App = () => {
     }
   };
 
+  const showAccessToken = () => {
+    alert(`Access Token: ${accessToken}`);
+  };
+
+  const showRefreshToken = () => {
+    alert(`Refresh Token: ${refreshToken}`);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>User Authentication</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
-        </form>
-        <p>
-          {message}
-        </p>
+        <p>{message}</p> {/* General message display */}
+        <p>{tokenDuration}</p> {/* Token duration message display */}
+        {!accessToken && (
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
+          </form>
+        )}
         {accessToken && (
           <div>
-            <p>{`Access Token: ${accessToken}`}</p>
-            <p>{`Refresh Token: ${refreshToken}`}</p>
-            <p>{tokenDuration}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <button onClick={showAccessToken}>Show Access Token</button>
+              <button onClick={showRefreshToken}>Show Refresh Token</button>
+            </div>
             <button onClick={handleLogout}>Logout</button>
           </div>
         )}
-        <button onClick={() => setIsLogin(!isLogin)}>
-          Switch to {isLogin ? 'Register' : 'Login'}
-        </button>
+        {!accessToken && (
+          <button onClick={() => setIsLogin(!isLogin)}>
+            Switch
+          </button>
+        )}
       </header>
     </div>
   );

@@ -8,27 +8,19 @@ const app = express();
 const port = 3001;
 
 app.use(
+    bodyParser.json(),
+    bodyParser.urlencoded({ extended: true }),
     cors(),
-    express.json(),
-    express.urlencoded({
-      extended: true,
-    }),
-  );  
+);
 
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Use authentication routes
 app.use('/auth', authRoutes);
 
 app.use((err, req, res, next) => {
     serverLogger.debug('This is in the app.use function in server.js');
     serverLogger.error('Something went wrong:', err);
-    res.status(err.status || 500);
-  });
+    res.status(err.status || 500).json({ message: 'Internal Server Error' });
+});
 
-// Start the server
 app.listen(port, () => {
     serverLogger.debug('This is in the app.listen function in server.js');
     console.log(`Server is running on http://localhost:${port}`);

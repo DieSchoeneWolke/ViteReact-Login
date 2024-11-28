@@ -46,34 +46,26 @@ input {
   font-size: 1em;
 }
 
+/* Standardized button styles */
 button {
-  width: 100%;
+  width: 200px; /* Set a fixed width for all buttons */
   padding: 10px;
-  background-color: #61dafb;
-  border: none;
+  background-color: transparent; /* Transparent background */
+  border: 2px solid #61dafb; /* Border color matching React logo */
   border-radius: 4px;
   font-size: 1em;
+  color: #61dafb; /* Text color matching React logo */
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s; /* Added color transition */
+  margin: 5px 0; /* Add margin for spacing between buttons */
 }
 
 button:hover {
-  background-color: #21a1f1;
+  background-color: #61dafb; /* Change background color on hover */
+  color: white; /* Change text color on hover */
 }
 
 p {
   margin-top: 10px;
   color: #61dafb;
-}
-
-button:last-of-type {
-  margin-top: 20px;
-  background-color: transparent;
-  color: #61dafb;
-  border: 1px solid #61dafb;
-}
-
-button:last-of-type:hover {
-  background-color: #61dafb;
-  color: white;
 }
