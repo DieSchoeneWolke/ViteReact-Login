@@ -11,14 +11,14 @@ This is an application using Vite and React to register and login a user using h
 
 - Create an `.env` file in the root directory of this repository including:
 
-´´´
+```
 DB_HOST=
 DB_USER=
 DB_PASSWORD=
 DB=user
 JWT_SECRET=
 LOG_LEVEL=INFO
-´´´
+```
 
 - Install the node modules with `npm install --include=dev`.
 
