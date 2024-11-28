@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import authRoutes from './routes/userRouter.js';
 import { serverLogger } from '../logging/logger.js';
+import sanitizer from 'perfect-express-sanitizer'
 
 const app = express();
 const port = 3001;
@@ -11,6 +12,13 @@ app.use(
     bodyParser.json(),
     bodyParser.urlencoded({ extended: true }),
     cors(),
+    sanitizer.clean({
+      xss: true,
+      noSql: false,
+      sql: true,
+      sqlLevel: 5,
+      noSqlLevel: 5
+    }),
 );
 
 app.use('/auth', authRoutes);

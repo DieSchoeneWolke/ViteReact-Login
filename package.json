@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "vite --port 3000 --open",
-    "api-dev": "npm nodemon ./src/backend/server.js --trace-deprecation",
+    "api-dev": "nodemon ./src/backend/server.js --trace-deprecation",
     "build": "vite build",
     "serve": "vite preview --open",
     "test": "vitest",
@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "log4js": "^6.9.1",
     "mysql2": "^3.11.4",
+    "perfect-express-sanitizer": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

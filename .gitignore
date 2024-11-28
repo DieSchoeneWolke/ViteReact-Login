@@ -3,6 +3,8 @@
 
 ### Custom ###
 /secrets
+yarn.lock
+package-lock.json
 
 ### Node ###
 # Logs
