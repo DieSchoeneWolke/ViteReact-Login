@@ -18,6 +18,7 @@ DB_PASSWORD=
 DB=user
 JWT_SECRET=
 LOG_LEVEL=INFO
+VITE_APP_API_URL=http://localhost:3001/auth
 ```
 
 - Install the node modules with `npm install --include=dev`.
