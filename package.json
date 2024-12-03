@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "start": "vite --port 3000 --open",
-    "api-dev": "nodemon ./src/backend/server.js --trace-deprecation",
+    "server": "node ./src/backend/server.js",
+    "server-dev": "nodemon ./src/backend/server.js --trace-deprecation",
     "build": "vite build",
     "serve": "vite preview --open",
     "test": "vitest",
-    "start-dev": "npm run start & npm run api-dev",
-    "start-dev-win": "start npm run start && start npm run api-dev"
+    "start-all": "npm run start & npm run server",
+    "start-dev": "npm run start & npm run server-dev",
+    "start-dev-win": "start npm run start && start npm run server-dev"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.25.1",
