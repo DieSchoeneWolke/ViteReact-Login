@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm install --include=dev
       - name: Build
-        run: vite build
+        run: npm run build
       - name: Serve
         run: start-all
       - name: Setup Pages
