@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Serve
-        run: start-all
+        run: npm run start-all
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
