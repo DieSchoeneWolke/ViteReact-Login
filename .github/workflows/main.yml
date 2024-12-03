@@ -29,6 +29,8 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
+      - name: Cleanup
+        run: rm package-lock.json && rm -rf node_modules
       - name: Install dependencies
         run: npm install --include=dev
       - name: Build
