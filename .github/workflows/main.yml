@@ -25,6 +25,7 @@ jobs:
       DB_DATABASE: user
       DB_USER: root
       DB_PASSWORD: root
+      DOTENV_PRIVATE_KEY: ${{ secrets.DOTENV_PRIVATE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
